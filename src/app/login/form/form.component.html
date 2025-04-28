@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>Bienvenido</h3>
+  <div class="links">
+    <button class="login">Iniciar sesión</button>
+    <button class="signup" (click)="signUp()">Registrate</button>
+  </div>
+  <form action="">
+    <span class="user-span">Usuario</span>
+    <input type="text" placeholder="Usuario" required />
+    <input type="password" placeholder="Contraseña" required />
+    <a href="#" class="forgot">¿Haz olvidado tu contraseña?</a>
+    <button class="loginBtn" (click)="login()">Inicio sesión</button>
+    <div class="remember">
+      <input type="checkbox" />
+      <p>Recordarme</p>
+    </div>
+  </form>
+</div>

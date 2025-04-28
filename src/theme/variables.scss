@@ -1,0 +1,24 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+  .swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--light-green) !important;
+  }
+}
+
+:root {
+  --dark-red: #bf343f;
+  --light-red: #f23838;
+  --dark-green: #2a8c43;
+  --light-green: #39bf5b;
+  --black: #0d0d0d;
+  --white: #fffdfe;
+}
