@@ -35,4 +35,18 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 /* Puedes poner esto en tu styles.scss o en el componente si usás encapsulación global */
+ion-tabs {
+  background-color: blue;
+  ion-tab-button {
+    --color-selected: #ff0000;
+    --color: #8e8e93;
 
+    .icon {
+      font-size: 20px;
+    }
+
+    &.tab-selected .icon {
+      color: var(--light-red);
+    }
+  }
+}

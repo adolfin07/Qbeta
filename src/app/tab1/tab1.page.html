@@ -1,13 +1,143 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>tab1</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tab1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <div class="container__top">
+      <app-header-products></app-header-products>
+    </div>
+
+    <div class="container__products">
+      <div class="content__container">
+        <div class="section">
+          <div class="section-title"><p>Carne</p></div>
+
+          <div class="product-row">
+            <div
+              *ngFor="let product of row1Products"
+              class="product-card"
+              (click)="selectProduct(product)"
+            >
+              <div class="product-content">
+                <div class="product-image">
+                  <img [src]="product.image" alt="Producto" />
+                </div>
+                <div class="product-name">{{ product.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title"><p>Cosechables</p></div>
+
+          <div class="product-row">
+            <div
+              *ngFor="let product of row2Products"
+              class="product-card"
+              (click)="selectProduct(product)"
+            >
+              <div class="product-content">
+                <div class="product-image">
+                  <img [src]="product.image" alt="Producto" />
+                </div>
+                <div class="product-name">{{ product.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title"><p>Extras</p></div>
+
+          <div class="product-row">
+            <div
+              *ngFor="let product of row3Products"
+              class="product-card"
+              (click)="selectProduct(product)"
+            >
+              <div class="product-content">
+                <div class="product-image">
+                  <img [src]="product.image" alt="Producto" />
+                </div>
+                <div class="product-name">{{ product.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-template" *ngIf="selectedProduct">
+      <div class="template-card">
+        <div class="template__header">
+          <div class="template__header-top">
+            <button (click)="closeProduct()">
+              <i class="fa-solid fa-arrow-left-long"></i>
+            </button>
+            <p>{{ row1Products[0].section }}</p>
+            <i class="fa-solid fa-bell"></i>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 400"
+            preserveAspectRatio="none"
+            style="width: 100%; height: 150px"
+          >
+            <path
+              fill="#f23838"
+              fill-opacity="1"
+              d="M0,0 C0,250 360,250 720,250 C1080,250 1440,400 1440,400 L1440,0 Z"
+            />
+          </svg>
+          <div class="template__header-bot">
+            <div class="img">
+              <img [src]="currentImage" alt="Imagen producto seleccionada" />
+            </div>
+          </div>
+        </div>
+
+        <div class="template__info">
+          <h3 class="product__name">{{ selectedProduct.name }}</h3>
+          <p>{{selectedProduct.description}}</p>
+        </div>
+
+        <div class="template__bottom">
+          <div
+            class="presentaciones"
+            *ngIf="selectedProduct.presentations?.length >= 3"
+          >
+            <div class="presentacion1" (click)="changeImage(0)">
+              <img
+                [src]="selectedProduct.presentations[0]"
+                alt="Presentación 1"
+              />
+            </div>
+            <div class="presentacion2" (click)="changeImage(1)">
+              <img
+                [src]="selectedProduct.presentations[1]"
+                alt="Presentación 2"
+              />
+            </div>
+            <div class="presentacion3" (click)="changeImage(2)">
+              <img
+                [src]="selectedProduct.presentations[2]"
+                alt="Presentación 3"
+              />
+            </div>
+          </div>
+
+          <div class="fichaTecnica">
+            <div class="">
+              <i class="fa-solid fa-file-pdf"></i>
+              <p>Ficha Técnica</p>
+            </div>
+          </div>
+          <div class="hojaSeguridad">
+            <div class="">
+              <i class="fa-solid fa-file-pdf"></i>
+              <p>Hoja de Seguridad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

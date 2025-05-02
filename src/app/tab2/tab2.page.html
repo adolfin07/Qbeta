@@ -1,17 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <div class="sucursales__container">
+      <div class="overlay"></div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <!-- Contenido principal -->
+      <div class="info-container">
+        <h2 *ngIf="sucursalActiva">{{ sucursalActiva?.nombre }}</h2>
+        <p *ngIf="sucursalActiva">{{ sucursalActiva?.direccion }}</p>
+        <p *ngIf="sucursalActiva">{{ sucursalActiva?.telefono }}</p>
+      </div>
+
+      <!-- Controles del carrusel -->
+      <div class="carousel">
+        <button (click)="cambiarSucursal(-1)">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="carousel-img">
+          <img
+            *ngIf="sucursalActiva"
+            [src]="sucursalActiva.imagen"
+            alt="{{ sucursalActiva.nombre }}"
+          />
+        </div>
+        <button (click)="cambiarSucursal(1)">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <iframe
+        [src]="getMapaUrl(sucursalActiva)"
+        frameborder="0"
+        allowfullscreen
+      >
+      </iframe>
+    </div>
+  </div>
 </ion-content>
