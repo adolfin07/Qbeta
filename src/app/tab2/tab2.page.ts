@@ -19,41 +19,48 @@ export interface Sucursal {
   standalone: false,
 })
 export class Tab2Page {
+
   // Lista de sucursales
   sucursales: Sucursal[] = [
     {
       id: 1,
       nombre: 'Los Mochis',
-      direccion: 'Av. Siempre Viva 123',
-      telefono: '1234-5678',
+      direccion:
+        'Blvd. Adolfo López Mateos 2463, Las Fuentes, 81223 Los Mochis, Sin.',
+      telefono: '668-812-2426',
       lat: 25.814926573657242,
       lng: -108.97690280505894,
       imagen:
-        'https://lh3.googleusercontent.com/gps-proxy/ALd4DhGXEFuBKnNtBLpMAsYokA16m84MnXoIvfP04UifZTS7UcU4g8A8uTwkVjbfhndoeUgvdtz3HyMXbCUnZ-eUXPjY0qPIISRasRph1Ew2yLZthRMSSxWN8x-14jbX0sg4PxYTmXdmzqoryfmlLTJ6glKjB8N6vXuTE4GdlQXPQQg4u0SOsaedH-Ew4Cqe-0ZgSTyePg=w203-h152-k-no',
+        'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=900&h=600&pitch=-10.414608473547744&panoid=snN8Rc9UXbCj-4P9fW577Q&yaw=125.57288761880184',
     },
     {
       id: 2,
       nombre: 'El Carrizo',
-      direccion: 'Calle Falsa 456',
-      telefono: '9876-5432',
-      lat: -34.5997,
-      lng: -58.3815,
-      imagen: 'assets/img/sucursal2.jpg',
+      direccion:
+        'Presa Ocoroni y Río Tamazula 210 Sur, Villa, 81343 Gustavo Díaz Ordaz, Sin.',
+      telefono: '668-865-0580',
+      lat: 26.26765451293984,
+      lng: -109.03789179524172,
+      imagen:
+        'https://lh3.googleusercontent.com/p/AF1QipNiui7UAUJ_MF-EUYIGwztIxFbM0cLdR9XHlg7D=s680-w680-h510-rw',
     },
     {
       id: 3,
       nombre: 'Guasave',
-      direccion: 'Calle Real 789',
-      telefono: '1122-3344',
-      lat: -34.6083,
-      lng: -58.3833,
-      imagen: 'assets/img/sucursal3.jpg',
+      direccion:
+        '81000 Blvd. 16 de septiembre, Agustina Ramírez y, 81030 Guasave, Sin.',
+      telefono: '687-872-2384',
+      lat: 25.577006942328232,
+      lng: -108.46341400090388,
+      imagen:
+        'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=900&h=600&pitch=5.903256304208924&panoid=T11h8ut26F9Q0G0RBjtwBA&yaw=72.17193226978364',
     },
     {
       id: 4,
       nombre: 'Juan José Rios',
-      direccion: 'Calle Real 789',
-      telefono: '1122-3344',
+      direccion:
+        'Calle Cero, entre Jambiola y Papariqui, Juan José Ríos, 81015 Juan José Ríos, Sin.',
+      telefono: '687-896-1235',
       lat: 25.759603954203026,
       lng: -108.81330643596284,
       imagen:
@@ -62,11 +69,13 @@ export class Tab2Page {
     {
       id: 5,
       nombre: 'Guamuchil',
-      direccion: 'Calle Real 789',
-      telefono: '1122-3344',
-      lat: -34.6083,
-      lng: -58.3833,
-      imagen: 'assets/img/sucursal3.jpg',
+      direccion:
+        'Nicolás Bravo y, Salvador Alvarado s/n, Zona Centro, 81400 Guamúchil, Sin.Calle Real 789',
+      telefono: '673-732-1313',
+      lat: 25.460275275479763,
+      lng: -108.07746013677846,
+      imagen:
+        'https://lh3.googleusercontent.com/p/AF1QipNoIDA7qtR-MzTjZJYIfxbl8Vu-1voLldNuciIv=w114-h86-k-no',
     },
   ];
 
@@ -89,9 +98,13 @@ export class Tab2Page {
     this.sucursalActiva = this.sucursales[newIndex];
   }
 
-  // Generar el URL del mapa de Google para la sucursal activa
-  getMapaUrl(sucursal: Sucursal): SafeResourceUrl {
-    const url = `https://www.google.com/maps?q=${sucursal.lat},${sucursal.lng}&hl=es&z=16&output=embed`;
+  getMapaUrl(sucursal: any): SafeResourceUrl {
+    if (!sucursal || !sucursal.direccion) return '';
+  
+    const url = `https://maps.google.com/maps?q=${encodeURIComponent(sucursal.direccion)}&output=embed`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+
+  
+  
 }

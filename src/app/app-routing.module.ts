@@ -6,13 +6,8 @@ import { LoginPage } from './login/login.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/tabs/tab1',
     pathMatch: 'full',
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'tabs',
@@ -20,18 +15,14 @@ const routes: Routes = [
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
-    path: 'sign-up',
-    loadChildren: () =>
-      import('./sign-up/sign-up.module').then((m) => m.SignUpPageModule),
-  },
-  {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
-    path: 'tab1',
-    loadChildren: () => import('./tab1/tab1.module').then( m => m.Tab1PageModule)
+    path: 'sign-up',
+    loadChildren: () =>
+      import('./sign-up/sign-up.module').then((m) => m.SignUpPageModule),
   },
 ];
 

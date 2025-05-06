@@ -38,7 +38,8 @@
               "node_modules/swiper/swiper.min.css",
               "node_modules/swiper/modules/navigation.min.css",
               "node_modules/swiper/modules/pagination.min.css",
-              "node_modules/swiper/modules/scrollbar.min.css"
+              "node_modules/swiper/modules/scrollbar.min.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
           },

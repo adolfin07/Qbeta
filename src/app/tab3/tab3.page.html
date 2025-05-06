@@ -1,17 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <div class="container__top">
+      <span>Mi Perfil</span>
+      <span id="nombreProductor">Nombre</span>
+      <span class="spanSubtitle">Productor</span>
+    </div>
+    <div class="container__bottom">
+      <div class="ic-tabs-container">
+        <div class="ic-tabs">
+          <button
+            *ngFor="let tab of tabs; let i = index"
+            (click)="seleccionarTab(i)"
+            [class.activo]="i === tabActivo"
+          >
+            IC
+          </button>
+        </div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+        <div class="ic-content">
+          <ng-container [ngSwitch]="tabActivo">
+            <div *ngSwitchCase="0" class="contenido1">Contenido de IC 1</div>
+            <div *ngSwitchCase="1" class="contenido2">Contenido de IC 2</div>
+            <div *ngSwitchCase="2" class="contenido3">Contenido de IC 3</div>
+          </ng-container>
+        </div>
+      </div>
+      <button  (click)="signOut()" id="signOut">
+        {{ isLoggedIn ? 'Cerrar Sesión' : 'Iniciar Sesión' }}
+      </button>
+    </div>
+  </div>
 </ion-content>
